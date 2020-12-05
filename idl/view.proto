@@ -1,0 +1,164 @@
+syntax = "proto3";
+
+package volvotwi.view;
+
+enum DurationMode {
+  YEARS = 0;
+  MONTHS = 1;
+  WEEKS = 2;
+  DAYS = 3;
+}
+
+message Counter {
+  string time = 1;
+  int32 count = 2;
+}
+
+message AccountSummaryRequest {
+
+}
+
+message AccountSummaryResponse {
+  int32 followers = 1;
+  int32 following = 2;
+  int32 tweets = 3;
+  int32 likes = 4;
+}
+
+message NewActionRequest {
+  enum ActionType {
+    COMMENTS = 0;
+    LIKES = 1;
+    FOLLOWERS = 2;
+    MENTIONS = 3;
+  }
+  int32 past_num = 1;
+  DurationMode duration_mode = 2;
+  ActionType action_type = 3;
+}
+
+message NewActionResponse {
+  repeated int32 count = 1;
+}
+
+message FollowerRegionDistRequest {
+
+}
+
+message FollowerRegionDistResponse {
+  message RegionCount {
+    string country_code = 1;
+    int32 count = 2;
+  }
+  repeated RegionCount region_count_list = 1;
+}
+
+message CarModelScoreRequest {
+  int32 past_num = 1;
+  DurationMode duration_mode = 2;
+}
+
+message CarModelScoreResponse {
+  message ModelScore {
+    string model = 1;
+    float score = 2;
+  }
+  repeated ModelScore model_score_list = 1;
+}
+
+message SentimentScoreDistRequest {
+
+}
+
+message SentimentScoreDistResponse {
+  int32 positive = 1;
+  int32 negative = 2;
+  int32 neutral = 3;
+}
+
+message AvgSentimentScoreRequest {
+  int32 past_num = 1;
+  DurationMode duration_mode = 2;
+}
+
+message AvgSentimentScoreResponse {
+  repeated float avg_score = 1;
+}
+
+message LatestMentionsRequest {
+  int32 page_idx = 1;
+  int32 content_num = 2;
+}
+
+message LatestMentionsResponse {
+  message Twitter {
+    string author = 1;
+    string content = 2;
+    string profile_pic_url = 3;
+  }
+  repeated Twitter latest_mentions = 1;
+}
+
+message WordCloudRequest {
+
+}
+
+message WordCloudResponse {
+  message WordCount {
+    string word = 1;
+    int32 count = 2;
+  }
+  repeated WordCount word_cloud = 1;
+}
+
+message AccountPageRequest {
+  DurationMode duration_mode = 1;
+}
+
+message AccountPageResponse {
+  AccountSummaryResponse summary_resp = 1;
+  repeated Counter new_comment_count = 2;
+  repeated Counter new_like_count = 3;
+  repeated Counter new_follower_count = 4;
+  repeated Counter new_mention_count = 5;
+
+  message RegionDist {
+    string country_code = 1;
+    float percentage = 2;
+  }
+  repeated RegionDist region_dist_list = 6;
+}
+
+message MentionPageRequest {
+
+}
+
+message MentionPageResponse {
+  message ModelScore {
+    string model = 1;
+    repeated int32 score_dist = 2;
+  }
+
+  message ScoreDist {
+    float positive = 1;
+    float negative = 2;
+    float neutral = 3;
+  }
+
+  message Twitter {
+    string author = 1;
+    string content = 2;
+    string profile_pic_url = 3;
+  }
+
+  message WordCount {
+    string word = 1;
+    int32 count = 2;
+  }
+
+  repeated ModelScore model_score_list = 1;
+  ScoreDist score_dist = 2;
+  repeated float avg_score = 3;
+  repeated Twitter latest_mentions = 4;
+  repeated WordCount word_cloud = 5;
+}

@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+import "view.proto";
+
+package volvotwi.service;
+
+service DashboardService {
+  rpc GetAccountSummary(volvotwi.view.AccountSummaryRequest) returns (volvotwi.view.AccountSummaryResponse);
+  rpc GetNewAction(volvotwi.view.NewActionRequest) returns (volvotwi.view.NewActionResponse);
+  rpc GetFollowerRegionDist(volvotwi.view.FollowerRegionDistRequest) returns (volvotwi.view.FollowerRegionDistResponse);
+  rpc GetCarModelScore(volvotwi.view.CarModelScoreRequest) returns (volvotwi.view.CarModelScoreResponse);
+  rpc GetSentimentScoreDist(volvotwi.view.SentimentScoreDistRequest) returns (volvotwi.view.SentimentScoreDistResponse);
+  rpc GetAvgSentimentScore(volvotwi.view.AvgSentimentScoreRequest) returns (volvotwi.view.AvgSentimentScoreResponse);
+  rpc GetLatestMentions(volvotwi.view.LatestMentionsRequest) returns (volvotwi.view.LatestMentionsResponse);
+  rpc GetWordCloud(volvotwi.view.WordCloudRequest) returns (volvotwi.view.WordCloudResponse);
+
+  rpc GetAccountPage(volvotwi.view.AccountPageRequest) returns (volvotwi.view.AccountPageResponse);
+  rpc GetMentionPage(volvotwi.view.MentionPageRequest) returns (volvotwi.view.MentionPageResponse);
+}
