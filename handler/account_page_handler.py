@@ -8,23 +8,23 @@ def get_account_response(duration_mode):
     data = twitter_processor.get_data(duration_mode)
     account_page_resp = viewpb.AccountPageResponse()
 
-    get_account_summary(account_page_resp.summary_resp, data)
+    get_account_summary(account_page_resp.summary_resp)
 
     get_new_action_count(account_page_resp.new_comment_count, 0, data)
     get_new_action_count(account_page_resp.new_like_count, 1, data)
     get_new_action_count(account_page_resp.new_follower_count, 2, data)
     get_new_action_count(account_page_resp.new_mention_count, 3, data)
 
-    get_region_dist_list(account_page_resp.region_dist_list, data)
+    get_region_dist_list(account_page_resp.region_dist_list)
 
     return MessageToJson(account_page_resp, preserving_proto_field_name=True)
 
 
-def get_account_summary(message, df):
-    message.followers = twitter_processor.get_follower_num(df)
-    message.following = twitter_processor.get_following_num(df)
-    message.tweets = twitter_processor.get_tweets_num(df)
-    message.likes = twitter_processor.get_likes_num(df)
+def get_account_summary(message):
+    message.followers = twitter_processor.get_follower_num()
+    message.following = twitter_processor.get_following_num()
+    message.tweets = twitter_processor.get_tweets_num()
+    message.likes = twitter_processor.get_likes_num()
 
 
 def get_new_action_count(message, mode, df):
@@ -35,8 +35,8 @@ def get_new_action_count(message, mode, df):
         action_count.count = v
 
 
-def get_region_dist_list(message, df):
-    country_dist_dict = twitter_processor.get_country_dist(df)
+def get_region_dist_list(message):
+    country_dist_dict = twitter_processor.get_region_dist()
 
     for k, v in country_dist_dict.items():
         country_dist = message.add()
