@@ -7,6 +7,7 @@ from wordcloud import WordCloud, STOPWORDS
 from dao.mysql_processor import read_mysql
 
 ori_tweet = read_mysql("twitter_data.`volvo0701-1101`")
+ori_tweet = ori_tweet.replace("", np.nan)
 ori_tweet["Tweet_time"] = pd.to_datetime(ori_tweet["Tweet_time"])
 st_words = set(STOPWORDS)
 
