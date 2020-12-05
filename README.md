@@ -16,6 +16,7 @@ Team Member:
 ```
 .
 |____dao                         # Data Access Objects
+| |____mysql_processor.py        # processor handling reading and writing to database
 | |____twitter_crawler.py        # real-time web crawler for obtaining Twitter Data
 | |____twitter_processor.py      # data processor to abstract storage layer and provide essential data upon request
 |

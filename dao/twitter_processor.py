@@ -4,7 +4,6 @@ import sklearn
 from textblob import TextBlob
 from wordcloud import WordCloud, STOPWORDS
 
-import pandas as pd
 from dao.mysql_processor import read_mysql
 
 ori_tweet = read_mysql("twitter_data.`volvo0701-1101`")
@@ -76,14 +75,15 @@ def get_action_count(action_type, duration_mode):
 
 def get_model_score():
     car_model = ["s60", "t6", "xc90", "xc60", "xc40"]
-    bins = [0] + list(np.arange(5, 110, 10))
+    bins = [0, 5, 15, 25, 35, 45, 55, 65, 75, 85, 95, 105]
     model_score = {}
 
+    contents = ori_tweet["Tweet_content"].str.lower()
+    ori_score = ori_tweet["sentiment_score"]
+
     for model in car_model:
-        scores = ori_tweet[ori_tweet["Tweet_content"].str.lower().str.contains(model, regex=False, na=False)][
-            "sentiment_score"]
-        scores = np.histogram(scores, bins)[0]
-        model_score[model] = scores
+        scores = ori_score[contents.str.contains(model, regex=False, na=False)]
+        model_score[model] = np.histogram(scores, bins)[0]
 
     return model_score
 
@@ -99,7 +99,7 @@ def get_score_dist():
 def get_avg_score():
     tweet_df_1D = ori_tweet[["Tweet_time", "sentiment_score"]].groupby(
         pd.Grouper(key='Tweet_time', freq='1D', convention='start')).mean()
-    return list(np.round(tweet_df_1D["sentiment_score"], 2))
+    return np.round(tweet_df_1D["sentiment_score"], 2)
 
 
 def get_latest_mention():
