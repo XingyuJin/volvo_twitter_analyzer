@@ -10,7 +10,7 @@ ori_tweet["Tweet_time"] = pd.to_datetime(ori_tweet["Tweet_time"])
 def pre_process(csv_name):
     tweet = pd.read_csv(csv_name, error_bad_lines=False)
     tweet = tweet.replace(' ', np.nan)
-    tweet = tweet[tweet['Tweet_content'].str.contains('volvo|Volvo|c30|s60|xc40bev|xc90|xc40|xc60|c30|s60')]
+    tweet = tweet[tweet['Tweet_content'].str.lower().str.contains('volvo|c30|s60|xc40bev|xc90|xc40|xc60|c30|s60')]
     tweet["Tweet_time"] = pd.to_datetime(tweet["Tweet_time"])
 
     twt_scores = []
