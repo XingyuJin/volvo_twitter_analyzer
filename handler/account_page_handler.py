@@ -5,15 +5,14 @@ from dao import twitter_processor
 
 
 def get_account_response(duration_mode):
-    data = twitter_processor.get_data(duration_mode)
     account_page_resp = viewpb.AccountPageResponse()
 
     get_account_summary(account_page_resp.summary_resp)
 
-    get_new_action_count(account_page_resp.new_comment_count, 0, data)
-    get_new_action_count(account_page_resp.new_like_count, 1, data)
-    get_new_action_count(account_page_resp.new_follower_count, 2, data)
-    get_new_action_count(account_page_resp.new_mention_count, 3, data)
+    get_new_action_count(account_page_resp.new_comment_count, 0, duration_mode)
+    get_new_action_count(account_page_resp.new_like_count, 1, duration_mode)
+    get_new_action_count(account_page_resp.new_follower_count, 2, duration_mode)
+    get_new_action_count(account_page_resp.new_mention_count, 3, duration_mode)
 
     get_region_dist_list(account_page_resp.region_dist_list)
 
@@ -27,8 +26,8 @@ def get_account_summary(message):
     message.likes = twitter_processor.get_likes_num()
 
 
-def get_new_action_count(message, mode, df):
-    action_count_dict = twitter_processor.get_action_count(mode, df)
+def get_new_action_count(message, action_type, duration_mode):
+    action_count_dict = twitter_processor.get_action_count(action_type, duration_mode)
     for k, v in action_count_dict.items():
         action_count = message.add()
         action_count.time = k

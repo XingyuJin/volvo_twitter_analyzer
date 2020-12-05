@@ -4,7 +4,10 @@ import sklearn
 from textblob import TextBlob
 from wordcloud import WordCloud, STOPWORDS
 
-ori_tweet = pd.read_csv("./dao/volvo0701-1101.csv", error_bad_lines=False)
+import pandas as pd
+from dao.mysql_processor import read_mysql
+
+ori_tweet = read_mysql("twitter_data.`volvo0701-1101`")
 ori_tweet["Tweet_time"] = pd.to_datetime(ori_tweet["Tweet_time"])
 st_words = set(STOPWORDS)
 
@@ -12,6 +15,7 @@ st_words = set(STOPWORDS)
 st_words.update(
     ['https', 'CO', 'RT', 'Please', 'via', 'amp', 'place', 'new', 'ttot', 'best', 'great', 'top', 'ht', 'Volvo',
      'car', 'cars'])
+
 
 def pre_process(csv_name):
     tweet = pd.read_csv(csv_name, error_bad_lines=False)
@@ -26,10 +30,6 @@ def pre_process(csv_name):
     twt_scores = sklearn.preprocessing.minmax_scale(twt_scores, feature_range=(0, 100), axis=0, copy=True)
     tweet["sentiment_score"] = twt_scores
     tweet.to_csv(csv_name)
-
-
-def get_data(duration_mode=-1):
-    return ori_tweet
 
 
 def get_follower_num():
@@ -60,8 +60,18 @@ def get_region_dist():
     return loc
 
 
-def get_action_count(tweet, mode):
-    return {"M": 1, "T": 12, "W": 123, "Th": 1234, "F": 15}
+def get_action_count(action_type, duration_mode):
+    if action_type == 0:
+        return {"M": 1, "T": 12, "W": 123, "Th": 1234, "F": 15}
+
+    if action_type == 1:
+        return {"M": 1, "T": 12, "W": 123, "Th": 1234, "F": 15}
+
+    if action_type == 2:
+        return {"M": 1, "T": 12, "W": 123, "Th": 1234, "F": 15}
+
+    if action_type == 3:
+        return {"M": 1, "T": 12, "W": 123, "Th": 1234, "F": 15}
 
 
 def get_model_score():
@@ -70,7 +80,8 @@ def get_model_score():
     model_score = {}
 
     for model in car_model:
-        scores = ori_tweet[ori_tweet["Tweet_content"].str.lower().str.contains(model, regex=False, na=False)]["sentiment_score"]
+        scores = ori_tweet[ori_tweet["Tweet_content"].str.lower().str.contains(model, regex=False, na=False)][
+            "sentiment_score"]
         scores = np.histogram(scores, bins)[0]
         model_score[model] = scores
 
@@ -92,7 +103,8 @@ def get_avg_score():
 
 
 def get_latest_mention():
-    latest = ori_tweet[["Tweet_time", "Tweet_username", "Tweet_content"]].sort_values("Tweet_time", ascending=False).head(5)
+    latest = ori_tweet[["Tweet_time", "Tweet_username", "Tweet_content"]].sort_values("Tweet_time",
+                                                                                      ascending=False).head(5)
     return latest[["Tweet_username", "Tweet_content"]].values
 
 
