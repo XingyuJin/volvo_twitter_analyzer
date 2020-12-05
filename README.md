@@ -43,7 +43,16 @@ Team Member:
 
 ### Twitter Web Crawler
 
+#### Data Model
+
+#### Crawler
+
 ### Twitter Data Processor
+
+#### Exploratory Data Analysis (EDA)
+
+#### Sentiment Analysis
+
 
 ### API Definition and Structure
 
