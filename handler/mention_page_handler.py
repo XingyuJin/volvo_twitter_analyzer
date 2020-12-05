@@ -49,4 +49,4 @@ def get_word_cloud(message):
     for k, v in word_cloud_dict.items():
         word_cloud = message.add()
         word_cloud.word = k
-        word_cloud.count = v
+        word_cloud.count = int(v * 1000)

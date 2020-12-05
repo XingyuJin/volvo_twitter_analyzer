@@ -2,10 +2,16 @@ import numpy as np
 import pandas as pd
 import sklearn
 from textblob import TextBlob
+from wordcloud import WordCloud, STOPWORDS
 
 ori_tweet = pd.read_csv("./dao/volvo0701-1101.csv", error_bad_lines=False)
 ori_tweet["Tweet_time"] = pd.to_datetime(ori_tweet["Tweet_time"])
+st_words = set(STOPWORDS)
 
+# enhancing stopword by removing @mentions and shorthands
+st_words.update(
+    ['https', 'CO', 'RT', 'Please', 'via', 'amp', 'place', 'new', 'ttot', 'best', 'great', 'top', 'ht', 'Volvo',
+     'car', 'cars'])
 
 def pre_process(csv_name):
     tweet = pd.read_csv(csv_name, error_bad_lines=False)
@@ -91,4 +97,6 @@ def get_latest_mention():
 
 
 def get_word_cloud():
-    return {"M": 1, "T": 12, "W": 123, "Th": 1234, "F": 15}
+    wc = WordCloud(height=300, repeat=False, width=500, max_words=50, stopwords=st_words, colormap='terrain',
+                   background_color='white').generate(' '.join(ori_tweet['Tweet_content'].dropna().astype(str)))
+    return wc.words_
