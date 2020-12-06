@@ -70,6 +70,7 @@ def get_action_count(action_type, duration_mode):
 
     grouped = grouped[grouped != 0][:(5 + 2 * (duration_mode == 3))]
     grouped.index = grouped.index.strftime("%Y-%m-%d")
+    grouped = grouped[::-1]
     return grouped.to_dict()
 
 
@@ -83,7 +84,7 @@ def get_model_score():
 
     for model in car_model:
         scores = ori_score[contents.str.contains(model, regex=False, na=False)]
-        model_score[model] = np.histogram(scores, bins)[0]
+        model_score[model] = np.round(np.histogram(scores, bins)[0] / len(scores), 3)
 
     return model_score
 
@@ -128,6 +129,7 @@ def get_latest_mention(top_type):
                 score_dict[k] += v
 
         top = pd.DataFrame(list(score_dict.items()), columns=["Tweet_username", "Tweet_content"], dtype="str").head(5)
+        top["Tweet_content"] = [f"Influence Score: {s[:6]} out of 100pts" for s in top["Tweet_content"]]
     else:
         top = ori_tweet[["Tweet_time", "Tweet_username", "Tweet_content"]].sort_values("Tweet_time",
                                                                                        ascending=False).head(5)

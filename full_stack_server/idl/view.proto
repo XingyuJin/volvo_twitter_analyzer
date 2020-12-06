@@ -136,7 +136,7 @@ message MentionPageRequest {
 message MentionPageResponse {
   message ModelScore {
     string model = 1;
-    repeated int32 score_dist = 2;
+    repeated float score_dist = 2;
   }
 
   message ScoreDist {
