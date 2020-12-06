@@ -1,5 +1,6 @@
 from django.http import HttpResponse  # 导入HttpResponse模块
 from django.views import View
+from django.shortcuts import render
 
 import handler.account_page_handler as accountH
 import handler.mention_page_handler as mentionH
@@ -7,7 +8,7 @@ import handler.mention_page_handler as mentionH
 
 class IndexView(View):
     def get(self, request, *args, **kwargs):
-        return HttpResponse("Hello world! This is get.")
+        return render(request, "index.html")
 
 
 class AccountPageView(View):

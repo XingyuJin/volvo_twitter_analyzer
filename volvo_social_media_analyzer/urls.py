@@ -20,6 +20,7 @@ from django.urls import path
 from volvo_social_media_analyzer import views
 
 urlpatterns = [
+    path("", views.IndexView.as_view()),
     path('admin/', admin.site.urls),
     url(r'^index/', views.IndexView.as_view()),
     url(r'^api/account/', views.AccountPageView.as_view()),
