@@ -23,7 +23,7 @@ class BarGraphCard extends Component {
                         <div className="card-title"> {type} </div>
                         <ResponsiveContainer width={310} height="75%" className="bar-chart-container">
                             <BarChart data={graphData} margin={{top: 5, bottom: 5, left: -30}}>
-                                <XAxis dataKey="time" interval={2}/>
+                                <XAxis dataKey="time" interval={2} padding={{right: 15}}/>
                                 <YAxis/>
                                 <Tooltip/>
                                 <Bar dataKey="count" fill="#A6CEE3"/>
