@@ -10,7 +10,7 @@ def get_mention_response():
     get_model_score(mention_page_resp.model_score_list)
     get_score_dist(mention_page_resp.score_dist)
     get_avg_score(mention_page_resp.avg_score)
-    get_latest_mention(mention_page_resp.latest_mentions)
+    get_top_twitter(mention_page_resp.top_twitter)
     get_word_cloud(mention_page_resp.word_cloud)
 
     return MessageToJson(mention_page_resp, preserving_proto_field_name=True)
@@ -36,12 +36,16 @@ def get_avg_score(message):
     message.extend(avg_score)
 
 
-def get_latest_mention(message):
-    latest_mention_lst = twitter_processor.get_latest_mention()
-    for tw in latest_mention_lst:
-        latest_mention = message.add()
-        latest_mention.author = tw[0]
-        latest_mention.content = tw[1]
+def get_top_twitter(message):
+    for t in ["recent", "top_like", "top_retweet", "top_influence"]:
+        top_twitter = message.add()
+        top_twitter.type = t
+
+        latest_mention_lst = twitter_processor.get_latest_mention(t)
+        for tw in latest_mention_lst:
+            latest_mention = top_twitter.twitters.add()
+            latest_mention.author = tw[0]
+            latest_mention.content = tw[1]
 
 
 def get_word_cloud(message):

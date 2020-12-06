@@ -3,137 +3,144 @@
 # source: service.proto
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
+from google.protobuf import message as _message
+from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
-
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
 
+
 import pbgen.view_pb2 as view__pb2
 
+
 DESCRIPTOR = _descriptor.FileDescriptor(
-    name='service.proto',
-    package='volvotwi.service',
-    syntax='proto3',
-    serialized_options=None,
-    create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n\rservice.proto\x12\x10volvotwi.service\x1a\nview.proto2\xd4\x07\n\x10\x44\x61shboardService\x12`\n\x11GetAccountSummary\x12$.volvotwi.view.AccountSummaryRequest\x1a%.volvotwi.view.AccountSummaryResponse\x12Q\n\x0cGetNewAction\x12\x1f.volvotwi.view.NewActionRequest\x1a .volvotwi.view.NewActionResponse\x12l\n\x15GetFollowerRegionDist\x12(.volvotwi.view.FollowerRegionDistRequest\x1a).volvotwi.view.FollowerRegionDistResponse\x12]\n\x10GetCarModelScore\x12#.volvotwi.view.CarModelScoreRequest\x1a$.volvotwi.view.CarModelScoreResponse\x12l\n\x15GetSentimentScoreDist\x12(.volvotwi.view.SentimentScoreDistRequest\x1a).volvotwi.view.SentimentScoreDistResponse\x12i\n\x14GetAvgSentimentScore\x12\'.volvotwi.view.AvgSentimentScoreRequest\x1a(.volvotwi.view.AvgSentimentScoreResponse\x12`\n\x11GetLatestMentions\x12$.volvotwi.view.LatestMentionsRequest\x1a%.volvotwi.view.LatestMentionsResponse\x12Q\n\x0cGetWordCloud\x12\x1f.volvotwi.view.WordCloudRequest\x1a .volvotwi.view.WordCloudResponse\x12W\n\x0eGetAccountPage\x12!.volvotwi.view.AccountPageRequest\x1a\".volvotwi.view.AccountPageResponse\x12W\n\x0eGetMentionPage\x12!.volvotwi.view.MentionPageRequest\x1a\".volvotwi.view.MentionPageResponseb\x06proto3'
-    ,
-    dependencies=[view__pb2.DESCRIPTOR, ])
+  name='service.proto',
+  package='volvotwi.service',
+  syntax='proto3',
+  serialized_options=None,
+  create_key=_descriptor._internal_create_key,
+  serialized_pb=b'\n\rservice.proto\x12\x10volvotwi.service\x1a\nview.proto2\xd4\x07\n\x10\x44\x61shboardService\x12`\n\x11GetAccountSummary\x12$.volvotwi.view.AccountSummaryRequest\x1a%.volvotwi.view.AccountSummaryResponse\x12Q\n\x0cGetNewAction\x12\x1f.volvotwi.view.NewActionRequest\x1a .volvotwi.view.NewActionResponse\x12l\n\x15GetFollowerRegionDist\x12(.volvotwi.view.FollowerRegionDistRequest\x1a).volvotwi.view.FollowerRegionDistResponse\x12]\n\x10GetCarModelScore\x12#.volvotwi.view.CarModelScoreRequest\x1a$.volvotwi.view.CarModelScoreResponse\x12l\n\x15GetSentimentScoreDist\x12(.volvotwi.view.SentimentScoreDistRequest\x1a).volvotwi.view.SentimentScoreDistResponse\x12i\n\x14GetAvgSentimentScore\x12\'.volvotwi.view.AvgSentimentScoreRequest\x1a(.volvotwi.view.AvgSentimentScoreResponse\x12`\n\x11GetLatestMentions\x12$.volvotwi.view.LatestMentionsRequest\x1a%.volvotwi.view.LatestMentionsResponse\x12Q\n\x0cGetWordCloud\x12\x1f.volvotwi.view.WordCloudRequest\x1a .volvotwi.view.WordCloudResponse\x12W\n\x0eGetAccountPage\x12!.volvotwi.view.AccountPageRequest\x1a\".volvotwi.view.AccountPageResponse\x12W\n\x0eGetMentionPage\x12!.volvotwi.view.MentionPageRequest\x1a\".volvotwi.view.MentionPageResponseb\x06proto3'
+  ,
+  dependencies=[view__pb2.DESCRIPTOR,])
+
+
 
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
+
+
 _DASHBOARDSERVICE = _descriptor.ServiceDescriptor(
-    name='DashboardService',
-    full_name='volvotwi.service.DashboardService',
-    file=DESCRIPTOR,
+  name='DashboardService',
+  full_name='volvotwi.service.DashboardService',
+  file=DESCRIPTOR,
+  index=0,
+  serialized_options=None,
+  create_key=_descriptor._internal_create_key,
+  serialized_start=48,
+  serialized_end=1028,
+  methods=[
+  _descriptor.MethodDescriptor(
+    name='GetAccountSummary',
+    full_name='volvotwi.service.DashboardService.GetAccountSummary',
     index=0,
+    containing_service=None,
+    input_type=view__pb2._ACCOUNTSUMMARYREQUEST,
+    output_type=view__pb2._ACCOUNTSUMMARYRESPONSE,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
-    serialized_start=48,
-    serialized_end=1028,
-    methods=[
-        _descriptor.MethodDescriptor(
-            name='GetAccountSummary',
-            full_name='volvotwi.service.DashboardService.GetAccountSummary',
-            index=0,
-            containing_service=None,
-            input_type=view__pb2._ACCOUNTSUMMARYREQUEST,
-            output_type=view__pb2._ACCOUNTSUMMARYRESPONSE,
-            serialized_options=None,
-            create_key=_descriptor._internal_create_key,
-        ),
-        _descriptor.MethodDescriptor(
-            name='GetNewAction',
-            full_name='volvotwi.service.DashboardService.GetNewAction',
-            index=1,
-            containing_service=None,
-            input_type=view__pb2._NEWACTIONREQUEST,
-            output_type=view__pb2._NEWACTIONRESPONSE,
-            serialized_options=None,
-            create_key=_descriptor._internal_create_key,
-        ),
-        _descriptor.MethodDescriptor(
-            name='GetFollowerRegionDist',
-            full_name='volvotwi.service.DashboardService.GetFollowerRegionDist',
-            index=2,
-            containing_service=None,
-            input_type=view__pb2._FOLLOWERREGIONDISTREQUEST,
-            output_type=view__pb2._FOLLOWERREGIONDISTRESPONSE,
-            serialized_options=None,
-            create_key=_descriptor._internal_create_key,
-        ),
-        _descriptor.MethodDescriptor(
-            name='GetCarModelScore',
-            full_name='volvotwi.service.DashboardService.GetCarModelScore',
-            index=3,
-            containing_service=None,
-            input_type=view__pb2._CARMODELSCOREREQUEST,
-            output_type=view__pb2._CARMODELSCORERESPONSE,
-            serialized_options=None,
-            create_key=_descriptor._internal_create_key,
-        ),
-        _descriptor.MethodDescriptor(
-            name='GetSentimentScoreDist',
-            full_name='volvotwi.service.DashboardService.GetSentimentScoreDist',
-            index=4,
-            containing_service=None,
-            input_type=view__pb2._SENTIMENTSCOREDISTREQUEST,
-            output_type=view__pb2._SENTIMENTSCOREDISTRESPONSE,
-            serialized_options=None,
-            create_key=_descriptor._internal_create_key,
-        ),
-        _descriptor.MethodDescriptor(
-            name='GetAvgSentimentScore',
-            full_name='volvotwi.service.DashboardService.GetAvgSentimentScore',
-            index=5,
-            containing_service=None,
-            input_type=view__pb2._AVGSENTIMENTSCOREREQUEST,
-            output_type=view__pb2._AVGSENTIMENTSCORERESPONSE,
-            serialized_options=None,
-            create_key=_descriptor._internal_create_key,
-        ),
-        _descriptor.MethodDescriptor(
-            name='GetLatestMentions',
-            full_name='volvotwi.service.DashboardService.GetLatestMentions',
-            index=6,
-            containing_service=None,
-            input_type=view__pb2._LATESTMENTIONSREQUEST,
-            output_type=view__pb2._LATESTMENTIONSRESPONSE,
-            serialized_options=None,
-            create_key=_descriptor._internal_create_key,
-        ),
-        _descriptor.MethodDescriptor(
-            name='GetWordCloud',
-            full_name='volvotwi.service.DashboardService.GetWordCloud',
-            index=7,
-            containing_service=None,
-            input_type=view__pb2._WORDCLOUDREQUEST,
-            output_type=view__pb2._WORDCLOUDRESPONSE,
-            serialized_options=None,
-            create_key=_descriptor._internal_create_key,
-        ),
-        _descriptor.MethodDescriptor(
-            name='GetAccountPage',
-            full_name='volvotwi.service.DashboardService.GetAccountPage',
-            index=8,
-            containing_service=None,
-            input_type=view__pb2._ACCOUNTPAGEREQUEST,
-            output_type=view__pb2._ACCOUNTPAGERESPONSE,
-            serialized_options=None,
-            create_key=_descriptor._internal_create_key,
-        ),
-        _descriptor.MethodDescriptor(
-            name='GetMentionPage',
-            full_name='volvotwi.service.DashboardService.GetMentionPage',
-            index=9,
-            containing_service=None,
-            input_type=view__pb2._MENTIONPAGEREQUEST,
-            output_type=view__pb2._MENTIONPAGERESPONSE,
-            serialized_options=None,
-            create_key=_descriptor._internal_create_key,
-        ),
-    ])
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetNewAction',
+    full_name='volvotwi.service.DashboardService.GetNewAction',
+    index=1,
+    containing_service=None,
+    input_type=view__pb2._NEWACTIONREQUEST,
+    output_type=view__pb2._NEWACTIONRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetFollowerRegionDist',
+    full_name='volvotwi.service.DashboardService.GetFollowerRegionDist',
+    index=2,
+    containing_service=None,
+    input_type=view__pb2._FOLLOWERREGIONDISTREQUEST,
+    output_type=view__pb2._FOLLOWERREGIONDISTRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetCarModelScore',
+    full_name='volvotwi.service.DashboardService.GetCarModelScore',
+    index=3,
+    containing_service=None,
+    input_type=view__pb2._CARMODELSCOREREQUEST,
+    output_type=view__pb2._CARMODELSCORERESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetSentimentScoreDist',
+    full_name='volvotwi.service.DashboardService.GetSentimentScoreDist',
+    index=4,
+    containing_service=None,
+    input_type=view__pb2._SENTIMENTSCOREDISTREQUEST,
+    output_type=view__pb2._SENTIMENTSCOREDISTRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetAvgSentimentScore',
+    full_name='volvotwi.service.DashboardService.GetAvgSentimentScore',
+    index=5,
+    containing_service=None,
+    input_type=view__pb2._AVGSENTIMENTSCOREREQUEST,
+    output_type=view__pb2._AVGSENTIMENTSCORERESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetLatestMentions',
+    full_name='volvotwi.service.DashboardService.GetLatestMentions',
+    index=6,
+    containing_service=None,
+    input_type=view__pb2._LATESTMENTIONSREQUEST,
+    output_type=view__pb2._LATESTMENTIONSRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetWordCloud',
+    full_name='volvotwi.service.DashboardService.GetWordCloud',
+    index=7,
+    containing_service=None,
+    input_type=view__pb2._WORDCLOUDREQUEST,
+    output_type=view__pb2._WORDCLOUDRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetAccountPage',
+    full_name='volvotwi.service.DashboardService.GetAccountPage',
+    index=8,
+    containing_service=None,
+    input_type=view__pb2._ACCOUNTPAGEREQUEST,
+    output_type=view__pb2._ACCOUNTPAGERESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetMentionPage',
+    full_name='volvotwi.service.DashboardService.GetMentionPage',
+    index=9,
+    containing_service=None,
+    input_type=view__pb2._MENTIONPAGEREQUEST,
+    output_type=view__pb2._MENTIONPAGERESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+])
 _sym_db.RegisterServiceDescriptor(_DASHBOARDSERVICE)
 
 DESCRIPTOR.services_by_name['DashboardService'] = _DASHBOARDSERVICE

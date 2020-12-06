@@ -1,51 +1,33 @@
 import numpy as np
 import pandas as pd
-import sklearn
-from textblob import TextBlob
 from wordcloud import WordCloud, STOPWORDS
 
 from dao.mysql_processor import read_mysql
 
 ori_tweet = read_mysql("twitter_data.`volvo0701-1101`")
-ori_tweet = ori_tweet.replace("", np.nan)
-ori_tweet["Tweet_time"] = pd.to_datetime(ori_tweet["Tweet_time"])
-st_words = set(STOPWORDS)
+volvo_account = read_mysql("twitter_data.volvocarusa_account")
 
+st_words = set(STOPWORDS)
 # enhancing stopword by removing @mentions and shorthands
 st_words.update(
     ['https', 'CO', 'RT', 'Please', 'via', 'amp', 'place', 'new', 'ttot', 'best', 'great', 'top', 'ht', 'Volvo',
      'car', 'cars'])
 
 
-def pre_process(csv_name):
-    tweet = pd.read_csv(csv_name, error_bad_lines=False)
-    tweet = tweet.replace(' ', np.nan)
-    tweet = tweet[tweet['Tweet_content'].str.lower().str.contains('volvo|c30|s60|xc40bev|xc90|xc40|xc60|c30|s60')]
-    tweet["Tweet_time"] = pd.to_datetime(tweet["Tweet_time"])
-
-    twt_scores = []
-    for c in tweet["Tweet_content"]:
-        twt_scores.append(TextBlob(c).sentiment.polarity)
-
-    twt_scores = sklearn.preprocessing.minmax_scale(twt_scores, feature_range=(0, 100), axis=0, copy=True)
-    tweet["sentiment_score"] = twt_scores
-    tweet.to_csv(csv_name)
-
-
 def get_follower_num():
-    return 132
+    return volvo_account.sort_values("Tweet_time", ascending=False)["Tweet_user_follower"][0]
 
 
 def get_following_num():
-    return 41234
+    return volvo_account.sort_values("Tweet_time", ascending=False)["Tweet_user_following"][0]
 
 
 def get_tweets_num():
-    return len(ori_tweet)
+    return len(volvo_account)
 
 
 def get_likes_num():
-    return 99
+    return sum(volvo_account["Tweet_like_count"])
 
 
 def get_region_dist():
@@ -103,10 +85,37 @@ def get_avg_score():
     return np.round(tweet_df_1D["sentiment_score"], 2)
 
 
-def get_latest_mention():
-    latest = ori_tweet[["Tweet_time", "Tweet_username", "Tweet_content"]].sort_values("Tweet_time",
-                                                                                      ascending=False).head(5)
-    return latest[["Tweet_username", "Tweet_content"]].values
+def get_latest_mention(top_type):
+    if top_type == "top_like":
+        top = ori_tweet[['Tweet_content', 'Tweet_username', 'Tweet_like_count']].sort_values('Tweet_like_count',
+                                                                                             ascending=False).head(5)
+    elif top_type == "top_retweet":
+        top = ori_tweet[['Tweet_content', 'Tweet_username', 'Tweet_retweet_count']].sort_values('Tweet_retweet_count',
+                                                                                                ascending=False).head(5)
+    elif top_type == "top_influence":
+        count = ori_tweet['Tweet_username'].value_counts()
+        df_count = pd.DataFrame()
+        df_count['Tweet_username'] = count.index
+        df_count['count'] = count.values
+        df_count["score"] = df_count["count"] / max(df_count["count"]) * 50
+        score_dict = df_count[["Tweet_username", "score"]].set_index('Tweet_username')["score"].to_dict()
+
+        df_userfollower = ori_tweet.loc[:, ['Tweet_username', 'Tweet_user_followers']]
+        df_userfollower.sort_values(by='Tweet_user_followers', ascending=False, inplace=True)
+        df_userfollower.drop_duplicates(subset='Tweet_username', keep='first', inplace=True)
+        df_userfollower["score"] = df_userfollower["Tweet_user_followers"] / max(
+            df_userfollower["Tweet_user_followers"]) * 50
+
+        for k, v in df_userfollower[["Tweet_username", "score"]].set_index('Tweet_username')["score"].to_dict().items():
+            if k in score_dict:
+                score_dict[k] += v
+
+        top = pd.DataFrame(list(score_dict.items()), columns=["Tweet_username", "Tweet_content"], dtype="str").head(5)
+    else:
+        top = ori_tweet[["Tweet_time", "Tweet_username", "Tweet_content"]].sort_values("Tweet_time",
+                                                                                       ascending=False).head(5)
+
+    return top[["Tweet_username", "Tweet_content"]].values
 
 
 def get_word_cloud():

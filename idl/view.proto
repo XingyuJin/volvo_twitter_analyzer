@@ -145,11 +145,16 @@ message MentionPageResponse {
     float neutral = 3;
   }
 
-  message Twitter {
-    string author = 1;
-    string content = 2;
-    string profile_pic_url = 3;
+  message TopTwitter {
+    message Twitter {
+      string author = 1;
+      string content = 2;
+      string profile_pic_url = 3;
+    }
+    string type = 1;
+    repeated Twitter twitters = 2;
   }
+
 
   message WordCount {
     string word = 1;
@@ -159,6 +164,6 @@ message MentionPageResponse {
   repeated ModelScore model_score_list = 1;
   ScoreDist score_dist = 2;
   repeated float avg_score = 3;
-  repeated Twitter latest_mentions = 4;
+  repeated TopTwitter top_twitter = 4;
   repeated WordCount word_cloud = 5;
 }

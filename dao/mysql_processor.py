@@ -1,5 +1,6 @@
 import sys
 
+import numpy as np
 import pandas as pd
 import pymysql
 
@@ -23,4 +24,7 @@ def read_mysql(table):
         sys.exit()
 
     conn.close()
+
+    df = df.replace("", np.nan)
+    df["Tweet_time"] = pd.to_datetime(df["Tweet_time"])
     return df

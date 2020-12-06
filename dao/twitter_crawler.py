@@ -5,9 +5,13 @@ import re
 import time
 from urllib.parse import quote, urlencode
 
+import numpy as np
+import pandas as pd
 import requests
+import sklearn
 import urllib3
 from requests.exceptions import RequestException
+from textblob import TextBlob
 
 
 class Twitter:
@@ -291,6 +295,21 @@ class Twitter:
                     break
             else:
                 break
+
+
+def preprocess(csv_name):
+    tweet = pd.read_csv(csv_name, error_bad_lines=False)
+    tweet = tweet.replace(' ', np.nan)
+    tweet = tweet[tweet['Tweet_content'].str.lower().str.contains('volvo|c30|s60|xc40bev|xc90|xc40|xc60|c30|s60')]
+    tweet["Tweet_time"] = pd.to_datetime(tweet["Tweet_time"])
+
+    twt_scores = []
+    for c in tweet["Tweet_content"]:
+        twt_scores.append(TextBlob(c).sentiment.polarity)
+
+    twt_scores = sklearn.preprocessing.minmax_scale(twt_scores, feature_range=(0, 100), axis=0, copy=True)
+    tweet["sentiment_score"] = twt_scores
+    tweet.to_csv(csv_name)
 
 
 if __name__ == '__main__':

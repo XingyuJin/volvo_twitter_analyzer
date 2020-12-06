@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\nview.proto\x12\rvolvotwi.view\"&\n\x07\x43ounter\x12\x0c\n\x04time\x18\x01 \x01(\t\x12\r\n\x05\x63ount\x18\x02 \x01(\x05\"\x17\n\x15\x41\x63\x63ountSummaryRequest\"]\n\x16\x41\x63\x63ountSummaryResponse\x12\x11\n\tfollowers\x18\x01 \x01(\x05\x12\x11\n\tfollowing\x18\x02 \x01(\x05\x12\x0e\n\x06tweets\x18\x03 \x01(\x05\x12\r\n\x05likes\x18\x04 \x01(\x05\"\xdd\x01\n\x10NewActionRequest\x12\x10\n\x08past_num\x18\x01 \x01(\x05\x12\x32\n\rduration_mode\x18\x02 \x01(\x0e\x32\x1b.volvotwi.view.DurationMode\x12?\n\x0b\x61\x63tion_type\x18\x03 \x01(\x0e\x32*.volvotwi.view.NewActionRequest.ActionType\"B\n\nActionType\x12\x0c\n\x08\x43OMMENTS\x10\x00\x12\t\n\x05LIKES\x10\x01\x12\r\n\tFOLLOWERS\x10\x02\x12\x0c\n\x08MENTIONS\x10\x03\"\"\n\x11NewActionResponse\x12\r\n\x05\x63ount\x18\x01 \x03(\x05\"\x1b\n\x19\x46ollowerRegionDistRequest\"\xa2\x01\n\x1a\x46ollowerRegionDistResponse\x12P\n\x11region_count_list\x18\x01 \x03(\x0b\x32\x35.volvotwi.view.FollowerRegionDistResponse.RegionCount\x1a\x32\n\x0bRegionCount\x12\x14\n\x0c\x63ountry_code\x18\x01 \x01(\t\x12\r\n\x05\x63ount\x18\x02 \x01(\x05\"\\\n\x14\x43\x61rModelScoreRequest\x12\x10\n\x08past_num\x18\x01 \x01(\x05\x12\x32\n\rduration_mode\x18\x02 \x01(\x0e\x32\x1b.volvotwi.view.DurationMode\"\x8e\x01\n\x15\x43\x61rModelScoreResponse\x12I\n\x10model_score_list\x18\x01 \x03(\x0b\x32/.volvotwi.view.CarModelScoreResponse.ModelScore\x1a*\n\nModelScore\x12\r\n\x05model\x18\x01 \x01(\t\x12\r\n\x05score\x18\x02 \x01(\x02\"\x1b\n\x19SentimentScoreDistRequest\"Q\n\x1aSentimentScoreDistResponse\x12\x10\n\x08positive\x18\x01 \x01(\x05\x12\x10\n\x08negative\x18\x02 \x01(\x05\x12\x0f\n\x07neutral\x18\x03 \x01(\x05\"`\n\x18\x41vgSentimentScoreRequest\x12\x10\n\x08past_num\x18\x01 \x01(\x05\x12\x32\n\rduration_mode\x18\x02 \x01(\x0e\x32\x1b.volvotwi.view.DurationMode\".\n\x19\x41vgSentimentScoreResponse\x12\x11\n\tavg_score\x18\x01 \x03(\x02\">\n\x15LatestMentionsRequest\x12\x10\n\x08page_idx\x18\x01 \x01(\x05\x12\x13\n\x0b\x63ontent_num\x18\x02 \x01(\x05\"\xa5\x01\n\x16LatestMentionsResponse\x12\x46\n\x0flatest_mentions\x18\x01 \x03(\x0b\x32-.volvotwi.view.LatestMentionsResponse.Twitter\x1a\x43\n\x07Twitter\x12\x0e\n\x06\x61uthor\x18\x01 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x02 \x01(\t\x12\x17\n\x0fprofile_pic_url\x18\x03 \x01(\t\"\x12\n\x10WordCloudRequest\"}\n\x11WordCloudResponse\x12>\n\nword_cloud\x18\x01 \x03(\x0b\x32*.volvotwi.view.WordCloudResponse.WordCount\x1a(\n\tWordCount\x12\x0c\n\x04word\x18\x01 \x01(\t\x12\r\n\x05\x63ount\x18\x02 \x01(\x05\"H\n\x12\x41\x63\x63ountPageRequest\x12\x32\n\rduration_mode\x18\x01 \x01(\x0e\x32\x1b.volvotwi.view.DurationMode\"\x9d\x03\n\x13\x41\x63\x63ountPageResponse\x12;\n\x0csummary_resp\x18\x01 \x01(\x0b\x32%.volvotwi.view.AccountSummaryResponse\x12\x31\n\x11new_comment_count\x18\x02 \x03(\x0b\x32\x16.volvotwi.view.Counter\x12.\n\x0enew_like_count\x18\x03 \x03(\x0b\x32\x16.volvotwi.view.Counter\x12\x32\n\x12new_follower_count\x18\x04 \x03(\x0b\x32\x16.volvotwi.view.Counter\x12\x31\n\x11new_mention_count\x18\x05 \x03(\x0b\x32\x16.volvotwi.view.Counter\x12G\n\x10region_dist_list\x18\x06 \x03(\x0b\x32-.volvotwi.view.AccountPageResponse.RegionDist\x1a\x36\n\nRegionDist\x12\x14\n\x0c\x63ountry_code\x18\x01 \x01(\t\x12\x12\n\npercentage\x18\x02 \x01(\x02\"\x14\n\x12MentionPageRequest\"\x9c\x04\n\x13MentionPageResponse\x12G\n\x10model_score_list\x18\x01 \x03(\x0b\x32-.volvotwi.view.MentionPageResponse.ModelScore\x12@\n\nscore_dist\x18\x02 \x01(\x0b\x32,.volvotwi.view.MentionPageResponse.ScoreDist\x12\x11\n\tavg_score\x18\x03 \x03(\x02\x12\x43\n\x0flatest_mentions\x18\x04 \x03(\x0b\x32*.volvotwi.view.MentionPageResponse.Twitter\x12@\n\nword_cloud\x18\x05 \x03(\x0b\x32,.volvotwi.view.MentionPageResponse.WordCount\x1a/\n\nModelScore\x12\r\n\x05model\x18\x01 \x01(\t\x12\x12\n\nscore_dist\x18\x02 \x03(\x05\x1a@\n\tScoreDist\x12\x10\n\x08positive\x18\x01 \x01(\x02\x12\x10\n\x08negative\x18\x02 \x01(\x02\x12\x0f\n\x07neutral\x18\x03 \x01(\x02\x1a\x43\n\x07Twitter\x12\x0e\n\x06\x61uthor\x18\x01 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x02 \x01(\t\x12\x17\n\x0fprofile_pic_url\x18\x03 \x01(\t\x1a(\n\tWordCount\x12\x0c\n\x04word\x18\x01 \x01(\t\x12\r\n\x05\x63ount\x18\x02 \x01(\x05*:\n\x0c\x44urationMode\x12\t\n\x05YEARS\x10\x00\x12\n\n\x06MONTHS\x10\x01\x12\t\n\x05WEEKS\x10\x02\x12\x08\n\x04\x44\x41YS\x10\x03\x62\x06proto3'
+  serialized_pb=b'\n\nview.proto\x12\rvolvotwi.view\"&\n\x07\x43ounter\x12\x0c\n\x04time\x18\x01 \x01(\t\x12\r\n\x05\x63ount\x18\x02 \x01(\x05\"\x17\n\x15\x41\x63\x63ountSummaryRequest\"]\n\x16\x41\x63\x63ountSummaryResponse\x12\x11\n\tfollowers\x18\x01 \x01(\x05\x12\x11\n\tfollowing\x18\x02 \x01(\x05\x12\x0e\n\x06tweets\x18\x03 \x01(\x05\x12\r\n\x05likes\x18\x04 \x01(\x05\"\xdd\x01\n\x10NewActionRequest\x12\x10\n\x08past_num\x18\x01 \x01(\x05\x12\x32\n\rduration_mode\x18\x02 \x01(\x0e\x32\x1b.volvotwi.view.DurationMode\x12?\n\x0b\x61\x63tion_type\x18\x03 \x01(\x0e\x32*.volvotwi.view.NewActionRequest.ActionType\"B\n\nActionType\x12\x0c\n\x08\x43OMMENTS\x10\x00\x12\t\n\x05LIKES\x10\x01\x12\r\n\tFOLLOWERS\x10\x02\x12\x0c\n\x08MENTIONS\x10\x03\"\"\n\x11NewActionResponse\x12\r\n\x05\x63ount\x18\x01 \x03(\x05\"\x1b\n\x19\x46ollowerRegionDistRequest\"\xa2\x01\n\x1a\x46ollowerRegionDistResponse\x12P\n\x11region_count_list\x18\x01 \x03(\x0b\x32\x35.volvotwi.view.FollowerRegionDistResponse.RegionCount\x1a\x32\n\x0bRegionCount\x12\x14\n\x0c\x63ountry_code\x18\x01 \x01(\t\x12\r\n\x05\x63ount\x18\x02 \x01(\x05\"\\\n\x14\x43\x61rModelScoreRequest\x12\x10\n\x08past_num\x18\x01 \x01(\x05\x12\x32\n\rduration_mode\x18\x02 \x01(\x0e\x32\x1b.volvotwi.view.DurationMode\"\x8e\x01\n\x15\x43\x61rModelScoreResponse\x12I\n\x10model_score_list\x18\x01 \x03(\x0b\x32/.volvotwi.view.CarModelScoreResponse.ModelScore\x1a*\n\nModelScore\x12\r\n\x05model\x18\x01 \x01(\t\x12\r\n\x05score\x18\x02 \x01(\x02\"\x1b\n\x19SentimentScoreDistRequest\"Q\n\x1aSentimentScoreDistResponse\x12\x10\n\x08positive\x18\x01 \x01(\x05\x12\x10\n\x08negative\x18\x02 \x01(\x05\x12\x0f\n\x07neutral\x18\x03 \x01(\x05\"`\n\x18\x41vgSentimentScoreRequest\x12\x10\n\x08past_num\x18\x01 \x01(\x05\x12\x32\n\rduration_mode\x18\x02 \x01(\x0e\x32\x1b.volvotwi.view.DurationMode\".\n\x19\x41vgSentimentScoreResponse\x12\x11\n\tavg_score\x18\x01 \x03(\x02\">\n\x15LatestMentionsRequest\x12\x10\n\x08page_idx\x18\x01 \x01(\x05\x12\x13\n\x0b\x63ontent_num\x18\x02 \x01(\x05\"\xa5\x01\n\x16LatestMentionsResponse\x12\x46\n\x0flatest_mentions\x18\x01 \x03(\x0b\x32-.volvotwi.view.LatestMentionsResponse.Twitter\x1a\x43\n\x07Twitter\x12\x0e\n\x06\x61uthor\x18\x01 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x02 \x01(\t\x12\x17\n\x0fprofile_pic_url\x18\x03 \x01(\t\"\x12\n\x10WordCloudRequest\"}\n\x11WordCloudResponse\x12>\n\nword_cloud\x18\x01 \x03(\x0b\x32*.volvotwi.view.WordCloudResponse.WordCount\x1a(\n\tWordCount\x12\x0c\n\x04word\x18\x01 \x01(\t\x12\r\n\x05\x63ount\x18\x02 \x01(\x05\"H\n\x12\x41\x63\x63ountPageRequest\x12\x32\n\rduration_mode\x18\x01 \x01(\x0e\x32\x1b.volvotwi.view.DurationMode\"\x9d\x03\n\x13\x41\x63\x63ountPageResponse\x12;\n\x0csummary_resp\x18\x01 \x01(\x0b\x32%.volvotwi.view.AccountSummaryResponse\x12\x31\n\x11new_comment_count\x18\x02 \x03(\x0b\x32\x16.volvotwi.view.Counter\x12.\n\x0enew_like_count\x18\x03 \x03(\x0b\x32\x16.volvotwi.view.Counter\x12\x32\n\x12new_follower_count\x18\x04 \x03(\x0b\x32\x16.volvotwi.view.Counter\x12\x31\n\x11new_mention_count\x18\x05 \x03(\x0b\x32\x16.volvotwi.view.Counter\x12G\n\x10region_dist_list\x18\x06 \x03(\x0b\x32-.volvotwi.view.AccountPageResponse.RegionDist\x1a\x36\n\nRegionDist\x12\x14\n\x0c\x63ountry_code\x18\x01 \x01(\t\x12\x12\n\npercentage\x18\x02 \x01(\x02\"\x14\n\x12MentionPageRequest\"\x81\x05\n\x13MentionPageResponse\x12G\n\x10model_score_list\x18\x01 \x03(\x0b\x32-.volvotwi.view.MentionPageResponse.ModelScore\x12@\n\nscore_dist\x18\x02 \x01(\x0b\x32,.volvotwi.view.MentionPageResponse.ScoreDist\x12\x11\n\tavg_score\x18\x03 \x03(\x02\x12\x42\n\x0btop_twitter\x18\x04 \x03(\x0b\x32-.volvotwi.view.MentionPageResponse.TopTwitter\x12@\n\nword_cloud\x18\x05 \x03(\x0b\x32,.volvotwi.view.MentionPageResponse.WordCount\x1a/\n\nModelScore\x12\r\n\x05model\x18\x01 \x01(\t\x12\x12\n\nscore_dist\x18\x02 \x03(\x05\x1a@\n\tScoreDist\x12\x10\n\x08positive\x18\x01 \x01(\x02\x12\x10\n\x08negative\x18\x02 \x01(\x02\x12\x0f\n\x07neutral\x18\x03 \x01(\x02\x1a\xa8\x01\n\nTopTwitter\x12\x0c\n\x04type\x18\x01 \x01(\t\x12G\n\x08twitters\x18\x02 \x03(\x0b\x32\x35.volvotwi.view.MentionPageResponse.TopTwitter.Twitter\x1a\x43\n\x07Twitter\x12\x0e\n\x06\x61uthor\x18\x01 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x02 \x01(\t\x12\x17\n\x0fprofile_pic_url\x18\x03 \x01(\t\x1a(\n\tWordCount\x12\x0c\n\x04word\x18\x01 \x01(\t\x12\r\n\x05\x63ount\x18\x02 \x01(\x05*:\n\x0c\x44urationMode\x12\t\n\x05YEARS\x10\x00\x12\n\n\x06MONTHS\x10\x01\x12\t\n\x05WEEKS\x10\x02\x12\x08\n\x04\x44\x41YS\x10\x03\x62\x06proto3'
 )
 
 _DURATIONMODE = _descriptor.EnumDescriptor(
@@ -53,8 +53,8 @@ _DURATIONMODE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2574,
-  serialized_end=2632,
+  serialized_start=2675,
+  serialized_end=2733,
 )
 _sym_db.RegisterEnumDescriptor(_DURATIONMODE)
 
@@ -1050,8 +1050,8 @@ _MENTIONPAGERESPONSE_MODELSCORE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2348,
-  serialized_end=2395,
+  serialized_start=2347,
+  serialized_end=2394,
 )
 
 _MENTIONPAGERESPONSE_SCOREDIST = _descriptor.Descriptor(
@@ -1095,34 +1095,34 @@ _MENTIONPAGERESPONSE_SCOREDIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2397,
-  serialized_end=2461,
+  serialized_start=2396,
+  serialized_end=2460,
 )
 
-_MENTIONPAGERESPONSE_TWITTER = _descriptor.Descriptor(
+_MENTIONPAGERESPONSE_TOPTWITTER_TWITTER = _descriptor.Descriptor(
   name='Twitter',
-  full_name='volvotwi.view.MentionPageResponse.Twitter',
+  full_name='volvotwi.view.MentionPageResponse.TopTwitter.Twitter',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='author', full_name='volvotwi.view.MentionPageResponse.Twitter.author', index=0,
+      name='author', full_name='volvotwi.view.MentionPageResponse.TopTwitter.Twitter.author', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='content', full_name='volvotwi.view.MentionPageResponse.Twitter.content', index=1,
+      name='content', full_name='volvotwi.view.MentionPageResponse.TopTwitter.Twitter.content', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='profile_pic_url', full_name='volvotwi.view.MentionPageResponse.Twitter.profile_pic_url', index=2,
+      name='profile_pic_url', full_name='volvotwi.view.MentionPageResponse.TopTwitter.Twitter.profile_pic_url', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -1142,6 +1142,44 @@ _MENTIONPAGERESPONSE_TWITTER = _descriptor.Descriptor(
   ],
   serialized_start=1303,
   serialized_end=1370,
+)
+
+_MENTIONPAGERESPONSE_TOPTWITTER = _descriptor.Descriptor(
+  name='TopTwitter',
+  full_name='volvotwi.view.MentionPageResponse.TopTwitter',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='type', full_name='volvotwi.view.MentionPageResponse.TopTwitter.type', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='twitters', full_name='volvotwi.view.MentionPageResponse.TopTwitter.twitters', index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[_MENTIONPAGERESPONSE_TOPTWITTER_TWITTER, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2463,
+  serialized_end=2631,
 )
 
 _MENTIONPAGERESPONSE_WORDCOUNT = _descriptor.Descriptor(
@@ -1212,7 +1250,7 @@ _MENTIONPAGERESPONSE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='latest_mentions', full_name='volvotwi.view.MentionPageResponse.latest_mentions', index=3,
+      name='top_twitter', full_name='volvotwi.view.MentionPageResponse.top_twitter', index=3,
       number=4, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -1228,7 +1266,7 @@ _MENTIONPAGERESPONSE = _descriptor.Descriptor(
   ],
   extensions=[
   ],
-  nested_types=[_MENTIONPAGERESPONSE_MODELSCORE, _MENTIONPAGERESPONSE_SCOREDIST, _MENTIONPAGERESPONSE_TWITTER, _MENTIONPAGERESPONSE_WORDCOUNT, ],
+  nested_types=[_MENTIONPAGERESPONSE_MODELSCORE, _MENTIONPAGERESPONSE_SCOREDIST, _MENTIONPAGERESPONSE_TOPTWITTER, _MENTIONPAGERESPONSE_WORDCOUNT, ],
   enum_types=[
   ],
   serialized_options=None,
@@ -1238,7 +1276,7 @@ _MENTIONPAGERESPONSE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=2032,
-  serialized_end=2572,
+  serialized_end=2673,
 )
 
 _NEWACTIONREQUEST.fields_by_name['duration_mode'].enum_type = _DURATIONMODE
@@ -1264,11 +1302,13 @@ _ACCOUNTPAGERESPONSE.fields_by_name['new_mention_count'].message_type = _COUNTER
 _ACCOUNTPAGERESPONSE.fields_by_name['region_dist_list'].message_type = _ACCOUNTPAGERESPONSE_REGIONDIST
 _MENTIONPAGERESPONSE_MODELSCORE.containing_type = _MENTIONPAGERESPONSE
 _MENTIONPAGERESPONSE_SCOREDIST.containing_type = _MENTIONPAGERESPONSE
-_MENTIONPAGERESPONSE_TWITTER.containing_type = _MENTIONPAGERESPONSE
+_MENTIONPAGERESPONSE_TOPTWITTER_TWITTER.containing_type = _MENTIONPAGERESPONSE_TOPTWITTER
+_MENTIONPAGERESPONSE_TOPTWITTER.fields_by_name['twitters'].message_type = _MENTIONPAGERESPONSE_TOPTWITTER_TWITTER
+_MENTIONPAGERESPONSE_TOPTWITTER.containing_type = _MENTIONPAGERESPONSE
 _MENTIONPAGERESPONSE_WORDCOUNT.containing_type = _MENTIONPAGERESPONSE
 _MENTIONPAGERESPONSE.fields_by_name['model_score_list'].message_type = _MENTIONPAGERESPONSE_MODELSCORE
 _MENTIONPAGERESPONSE.fields_by_name['score_dist'].message_type = _MENTIONPAGERESPONSE_SCOREDIST
-_MENTIONPAGERESPONSE.fields_by_name['latest_mentions'].message_type = _MENTIONPAGERESPONSE_TWITTER
+_MENTIONPAGERESPONSE.fields_by_name['top_twitter'].message_type = _MENTIONPAGERESPONSE_TOPTWITTER
 _MENTIONPAGERESPONSE.fields_by_name['word_cloud'].message_type = _MENTIONPAGERESPONSE_WORDCOUNT
 DESCRIPTOR.message_types_by_name['Counter'] = _COUNTER
 DESCRIPTOR.message_types_by_name['AccountSummaryRequest'] = _ACCOUNTSUMMARYREQUEST
@@ -1490,10 +1530,17 @@ MentionPageResponse = _reflection.GeneratedProtocolMessageType('MentionPageRespo
     })
   ,
 
-  'Twitter' : _reflection.GeneratedProtocolMessageType('Twitter', (_message.Message,), {
-    'DESCRIPTOR' : _MENTIONPAGERESPONSE_TWITTER,
+  'TopTwitter' : _reflection.GeneratedProtocolMessageType('TopTwitter', (_message.Message,), {
+
+    'Twitter' : _reflection.GeneratedProtocolMessageType('Twitter', (_message.Message,), {
+      'DESCRIPTOR' : _MENTIONPAGERESPONSE_TOPTWITTER_TWITTER,
+      '__module__' : 'view_pb2'
+      # @@protoc_insertion_point(class_scope:volvotwi.view.MentionPageResponse.TopTwitter.Twitter)
+      })
+    ,
+    'DESCRIPTOR' : _MENTIONPAGERESPONSE_TOPTWITTER,
     '__module__' : 'view_pb2'
-    # @@protoc_insertion_point(class_scope:volvotwi.view.MentionPageResponse.Twitter)
+    # @@protoc_insertion_point(class_scope:volvotwi.view.MentionPageResponse.TopTwitter)
     })
   ,
 
@@ -1510,7 +1557,8 @@ MentionPageResponse = _reflection.GeneratedProtocolMessageType('MentionPageRespo
 _sym_db.RegisterMessage(MentionPageResponse)
 _sym_db.RegisterMessage(MentionPageResponse.ModelScore)
 _sym_db.RegisterMessage(MentionPageResponse.ScoreDist)
-_sym_db.RegisterMessage(MentionPageResponse.Twitter)
+_sym_db.RegisterMessage(MentionPageResponse.TopTwitter)
+_sym_db.RegisterMessage(MentionPageResponse.TopTwitter.Twitter)
 _sym_db.RegisterMessage(MentionPageResponse.WordCount)
 
 
