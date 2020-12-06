@@ -15,7 +15,7 @@ st_words.update(
 
 
 def get_follower_num():
-    return volvo_account.sort_values("Tweet_time", ascending=False)["Tweet_user_follower"][0]
+    return volvo_account.sort_values("Tweet_time", ascending=False)["Tweet_user_followers"][0]
 
 
 def get_following_num():
@@ -43,17 +43,34 @@ def get_region_dist():
 
 
 def get_action_count(action_type, duration_mode):
+    if duration_mode == 0:
+        freq = "1Y"
+    elif duration_mode == 1:
+        freq = "1M"
+    elif duration_mode == 2:
+        freq = "1W"
+    else:
+        freq = "1D"
+
     if action_type == 0:
-        return {"M": 1, "T": 12, "W": 123, "Th": 1234, "F": 15}
+        action = "Tweet_reply_count"
+    elif action_type == 1:
+        action = "Tweet_like_count"
+    elif action_type == 2:
+        action = "Tweet_retweet_count"
 
-    if action_type == 1:
-        return {"M": 1, "T": 12, "W": 123, "Th": 1234, "F": 15}
+    if action_type < 3:
+        grouped = volvo_account[["Tweet_time", action]].groupby(
+            pd.Grouper(key='Tweet_time', freq=freq, convention='start')).sum()[action].sort_index(ascending=False)
+    else:
+        if freq == "1Y":
+            freq = "1M"
+        grouped = ori_tweet[["Tweet_time", "Tweet_id"]].groupby(
+            pd.Grouper(key='Tweet_time', freq=freq, convention='start')).count()["Tweet_id"].sort_index(ascending=False)
 
-    if action_type == 2:
-        return {"M": 1, "T": 12, "W": 123, "Th": 1234, "F": 15}
-
-    if action_type == 3:
-        return {"M": 1, "T": 12, "W": 123, "Th": 1234, "F": 15}
+    grouped = grouped[grouped != 0][:(5 + 2 * (duration_mode == 3))]
+    grouped.index = grouped.index.strftime("%Y-%m-%d")
+    return grouped.to_dict()
 
 
 def get_model_score():

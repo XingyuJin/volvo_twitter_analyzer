@@ -12,7 +12,7 @@ class IndexView(View):
 
 class AccountPageView(View):
     def get(self, request, *args, **kwargs):
-        response = accountH.get_account_response(request.GET.get("duration_mode"))
+        response = accountH.get_account_response(int(request.GET.get("duration_mode")))
         return HttpResponse(response)
 
 
