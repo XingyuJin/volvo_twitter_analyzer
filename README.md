@@ -5,11 +5,11 @@
 Team Member:
 
 - Xingyu Jin < xingyu.jin21@berkeley.edu >
-- Mingyue Tang < xxx@berkeley.edu >
-- Ruochen Liu < xxx@berkeley.edu >
-- Ilene Kung < xxx@berkeley.edu >
-- Neil Rabb < xxx@berkeley.edu >
-- Yichu Chen < xxx@berkeley.edu >
+- Mingyue Tang < mingyue_tang@berkeley.edu >
+- Ruochen Liu < ruochen99@berkeley.edu >
+- Ilene Kung < ilenekung@berkeley.edu >
+- Yichu Chen < sterlingyichuchen@berkeley.edu >
+- Neil Rabb < neil.rabb@berkeley.edu >
 
 ### Code Structure
 
