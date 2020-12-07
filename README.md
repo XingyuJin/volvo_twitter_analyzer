@@ -44,6 +44,7 @@ Team Member:
 | | |____views.py                  # Request handling views
 | | |____wsgi.py                   # Exposes the WSGI callable as a module-level variable
 | |
+| |____cronjob.py                  # Cronjob framework for keeping database updated
 | |____manage.py                   # Main function to run server and listen to http requests
 ```
 
