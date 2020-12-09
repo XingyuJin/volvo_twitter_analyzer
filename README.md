@@ -46,6 +46,8 @@ Team Member:
 | |
 | |____cronjob.py                  # Cronjob framework for keeping database updated
 | |____manage.py                   # Main function to run server and listen to http requests
+|
+|____requirements.txt              # All external libaries needed for running this project
 ```
 
 ### Twitter Web Crawler
