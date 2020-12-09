@@ -11,6 +11,12 @@ Team Member:
 - Yichu Chen < sterlingyichuchen@berkeley.edu >
 - Neil Rabb < neil.rabb@berkeley.edu >
 
+### Project Background
+
+Social media is an important method through which the public share their lives and express their opinions. Among all kinds of social media platforms, Twitter is one of the most popular one where a company can get insights about what the public is thinking through their comments online. In this project, we aim to help Volvo team to better understand the social media contents collected on Twitter about Volvo and their products, provide visualizations as well as representative models to dig into data's essence, and equip Volvo's business team with a comprehensive and customizable tool for monitoring population attitude and improving commercial strategy accordingly.
+
+Our project utilizes web-crawling algorithms, Natural Language Processing techniques, sentimental analysis, time series model, and other statistical and machine learning models to conduct EDA and prediction on the collected data set. As our final product, we developed a dashboard which allows users to customize filters and get data driven results accordingly.
+
 ### Code Structure
 
 ```
@@ -21,7 +27,7 @@ Team Member:
 | |____dao                         # Data Access Objects
 | | |____mysql_processor.py        # processor handling reading and writing to database
 | | |____twitter_crawler.py        # real-time web crawler for obtaining Twitter Data
-| | |____twitter_processor.py      # data processor to abstract storage layer and provide essential data upon request
+| | |____twitter_processor.py      # data processor to abstract storage layer and  essential data upon request
 | |
 | |____handler                     # All handler functions dealing with main server logic
 | | |____account_page_handler.py   # All functions related to handling account page API requests
