@@ -50,13 +50,23 @@ Team Member:
 
 ### Twitter Web Crawler
 
-#### Data Model
-
-#### Crawler
+In order to bypass restrictions of Twitter API, such amount of tweets, QPS and time range, our crawler fetching the content directly from the HTML public pages, then parse the content we want. In addtion, we built a pipeline to scrape, pre-preproces and output sentiment scores. We obtained two main datasets, one includes all tweets about Volvo for 3 months (volvo701-1001.csv, 14486*27), another includes tweets from @VolvoCarUSA for 4 years(VolvoCarUSA.csv, 4001*8). 
 
 ### Twitter Data Processor
 
+#### Data cleaning 
+We start with filtering out ads. Our cleaning function removes mentions, punctuation, digits, stopwords and urls, changes emoji into one words, change letters to lowercase, and normalize text. 
+
 #### Exploratory Data Analysis (EDA)
+  Tweets about Volvo: 
+    1. Pie chart for main sources (geographically) 
+    2. Major statistics (Num of tweets, retweets, likes, replies per day) 
+    3. Time series : Daily and weekly tweet freq count 
+    4. Histogram for Tweets sent by weekday and Tweets sent by hour of the day (in UTC) 
+    6. Tweets that got top 10 retweeted/ repied/ liked 
+    7. Bar chart for top active and influential users 
+    8. wordcloud 
+    
 
 #### Sentiment Analysis
 
