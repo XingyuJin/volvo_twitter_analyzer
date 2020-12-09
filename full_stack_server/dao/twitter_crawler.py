@@ -15,8 +15,8 @@ from textblob import TextBlob
 
 
 class WebCrawler:
-    def __init__(self):
-        self.csv_filename = ""
+    def __init__(self, outfile):
+        self.csv_filename = outfile
         self.count = 0
 
     def crawl(self, page):
@@ -184,8 +184,8 @@ class WebCrawler:
 
 
 class Twitter(WebCrawler):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, outfile):
+        super().__init__(outfile)
         self.headers = {
             'accept': '*/*',
             'accept-encoding': 'gzip, deflate, br',
@@ -217,7 +217,7 @@ class Twitter(WebCrawler):
         self.since = '2020-06-01'  # begin
         self.until = '2020-12-01'  # end
 
-        self.csv_filename = 'volvo0501-1101.csv'
+        # self.csv_filename = 'volvo0501-1101.csv'
 
     def crawl(self, page):
         while True:
@@ -305,8 +305,8 @@ class Twitter(WebCrawler):
 
 
 class VolvoAccount(WebCrawler):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, outfile):
+        super().__init__(outfile)
         self.headers = {
             'authority': 'twitter.com',
             'pragma': 'no-cache',
@@ -333,7 +333,7 @@ class VolvoAccount(WebCrawler):
 
         self.current_cursor = ''
 
-        self.csv_filename = 'VolvoCarUSA.csv'
+        # self.csv_filename = 'VolvoCarUSA.csv'
         # self.keyword = 'volvo'
         self.since = '2019-11-01'
         self.until = '2020-11-01'
@@ -440,5 +440,5 @@ def preprocess(csv_name):
 
 
 if __name__ == '__main__':
-    tw = Twitter()
+    tw = Twitter("tmp.csv")
     tw.run()

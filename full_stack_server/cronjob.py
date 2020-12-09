@@ -1,22 +1,25 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
 
 from dao.mysql_processor import write_mysql
-from dao.twitter_crawler import Twitter, VolvoAccount
+from dao.twitter_crawler import Twitter, VolvoAccount, preprocess
 
-CSV_PATH = "./data/"
+CSV_PATH = ""
 
 
 def start_job():
     # Update Twitter Mention Data
-    mention = Twitter()
+    n1, n2 = "volvo0501-1101.csv", "VolvoCarUSA.csv"
+    mention = Twitter(n1)
     mention.run()
+    preprocess(n1)
 
     # Update Volvo Account Data
-    account = VolvoAccount()
+    account = VolvoAccount(n2)
     account.run()
+    preprocess(n2)
 
-    write_mysql(f"{CSV_PATH}volvo0701-1101.csv", "twitter_data.`volvo0701-1101`")
-    write_mysql(f"{CSV_PATH}volvocarusa_account.csv", "twitter_data.volvocarusa_account")
+    write_mysql(f"{CSV_PATH}{n1}", "twitter_data.`volvomention`")
+    write_mysql(f"{CSV_PATH}{n2}", "twitter_data.volvocarusa_account")
 
 
 def main():
