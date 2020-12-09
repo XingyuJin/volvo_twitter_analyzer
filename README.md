@@ -97,7 +97,9 @@ With the existing data on daily average sentiment score of Tweets about Volvo, w
 
 We generalized all data processing functions and machine learning models explored in the EDA process and developed a well-functional dashboard as our final product. The dashboard is strongly customizable and thus capable of providing interesting insights from social media content to Volvo's team. The product is developed under separate frontend, backend, and database server, and the communication between layers are highly abstracted to ensure functionality and privacy.
 
-#### Frontend Server
+#### Frontend 
+
+We first used the prototype tool Figma to make a design mockup and finalized all the features and functionalities we'd like to have on the dashboard. After that, we built our frontend using the open-source JavaScript library React. We creacted two separate views and several different components based on their appearances and functionalities. We also borrowed UI components from the React Bootstrap library and used the axios library to handle all the API requests. Besides, there are lots of data visualizations on our dashboard and we decided to use the composable charting library Recharts.
 
 #### Backend Server
 
