@@ -166,4 +166,5 @@ message MentionPageResponse {
   repeated float avg_score = 3;
   repeated TopTwitter top_twitter = 4;
   repeated WordCount word_cloud = 5;
+  bool future_warning = 6;
 }

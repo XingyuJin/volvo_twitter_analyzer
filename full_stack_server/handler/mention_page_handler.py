@@ -12,8 +12,8 @@ def get_mention_response():
     get_avg_score(mention_page_resp.avg_score)
     get_top_twitter(mention_page_resp.top_twitter)
     get_word_cloud(mention_page_resp.word_cloud)
-
-    return MessageToJson(mention_page_resp, preserving_proto_field_name=True)
+    get_pred_score(mention_page_resp)
+    return MessageToJson(mention_page_resp, including_default_value_fields=True, preserving_proto_field_name=True)
 
 
 def get_model_score(message):
@@ -34,6 +34,11 @@ def get_score_dist(message):
 def get_avg_score(message):
     avg_score = twitter_processor.get_avg_score()
     message.extend(avg_score)
+
+
+def get_pred_score(message):
+    pred = twitter_processor.get_pred_result()
+    message.future_warning = pred
 
 
 def get_top_twitter(message):

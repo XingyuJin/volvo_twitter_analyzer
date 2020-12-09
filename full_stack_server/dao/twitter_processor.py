@@ -1,8 +1,11 @@
 import numpy as np
 import pandas as pd
+from statsmodels.tsa.statespace.sarimax import SARIMAX
 from wordcloud import WordCloud, STOPWORDS
 
 from dao.mysql_processor import read_mysql
+
+# from statsmodels.tsa.arima_model import ARIMA
 
 ori_tweet = read_mysql("twitter_data.`volvo0701-1101`")
 volvo_account = read_mysql("twitter_data.volvocarusa_account")
@@ -101,6 +104,17 @@ def get_avg_score():
     tweet_df_1D = ori_tweet[["Tweet_time", "sentiment_score"]].groupby(
         pd.Grouper(key='Tweet_time', freq='1D', convention='start')).mean()
     return np.round(tweet_df_1D["sentiment_score"], 2)
+
+
+def get_pred_result():
+    cur_scores = get_avg_score()
+    model_sarimax = SARIMAX(cur_scores, order=(1, 1, 1))
+
+    model_sarimax_fit = model_sarimax.fit()
+
+    # Create forecasts
+    sarima_pred = model_sarimax_fit.forecast(7)
+    return bool(np.any(sarima_pred < 50))
 
 
 def get_latest_mention(top_type):
