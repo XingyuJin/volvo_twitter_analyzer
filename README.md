@@ -75,13 +75,24 @@ We start with filtering out ads. Our cleaning function removes mentions, punctua
     3. Tweets with most likes/ retweets/ replies 
  
  
-
 #### Sentiment Analysis
 
 First, we ranked the frequency of positive, neutral, and positive words with a labeled dataset. After deleting stop words, punctuations, and filler words, we were left with the most commonly appeared words from the three categories. Based on the frequency, we then assigned a specific score representing the strength/relevance of that word to a specific sentiment (positive: 0-1, neutral:0, negative:-1-0). Based on this logic, we utilized TextBlob to calculate subjectivity and polarity of each sentence and evaluate the sentiment of each tweet after EDA. We also added “slightly positive” and “slightly negative” to further classify tweets based on the magnitude of their sentiments, making it easier for the team to prioritize the most pressing issues in the Dashboard.
 
 We grouped the tweets by car models that were provided by the mentors from Volvo. Then, by giving a sentiment score to every tweet in each group, Volvo will know that each car model’s feedback is positive or negative. We also group the tweets by country and analyze their sentiment scores, so Volvo knows which countries they need to target in order to improve its performance.
 
-### API Definition and Structure
+#### Time Series Prediction
 
-### Frontend UI and UX Design
+With the existing data on daily average sentiment score of Tweets about Volvo, we developed a time series model to predict the average sentiment score of each day in the upcoming week. Through such time-sensitive prediction, we are able to capture an overall trend of the public's attitude on Volvo in general. If the trend of average sentiment score is going down and would reach "negative" in a week, the alert system will be triggered and suggests Volvo's team to pinpoint the issue.
+
+### Final Product
+
+We generalized all data processing functions and machine learning models explored in the EDA process and developed a well-functional dashboard as our final product. The dashboard is strongly customizable and thus capable of providing interesting insights from social media content to Volvo's team. The product is developed under separate frontend, backend, and database server, and the communication between layers are highly abstracted to ensure functionality and privacy.
+
+#### Frontend Server
+
+#### Backend Server
+
+The backend server is built through the Python Django framework to handle HTTP requests sent from the frontend server. All logics are handled through two main layers: logic handlers and data accessing objects (DAO). DAO is designed specifically to interact with our database, reading from and writing to the MySQL server storing all relevant data. A logic handler must access data through DAO so that it is easier to control authority and keep the database clean. While reading from the database is straightforward and less challenging, we developed thread-safe database writing algorithms to keep everything clean and up-to-date. We utilize an offline update with Cron Job deployed on our server. The Cron Job will periodically update our data everyday under a predefined Crawling-Processing-Writing pipeline. 
+
+Logic handlers provide main functionality of our product and provide HTTP response to the front end server. All HTTP requests and responses are serialized and formatted with Google Protocol Buffer v3 under the API defined ahead of time. 
