@@ -50,16 +50,37 @@ Team Member:
 
 ### Twitter Web Crawler
 
-#### Data Model
-
-#### Crawler
+In order to bypass restrictions of Twitter API, such amount of tweets, QPS and time range, our crawler fetching the content directly from the HTML public pages, then parse the content we want. We built a pipeline to scrape, pre-preproces and output sentiment scores. We are using two main datasets, one includes all tweets about Volvo for 3 months (volvo701-1001.csv), one includes tweets from @VolvoCarUSA for 4 years(VolvoCarUSA.csv). 
 
 ### Twitter Data Processor
 
+#### Data cleaning 
+
+We start with filtering out ads. Our cleaning function removes mentions, punctuation, digits, stopwords and urls, changes emoji into one words, change letters to lowercase, and normalize text. 
+
 #### Exploratory Data Analysis (EDA)
+
+  ##### Tweets about Volvo: 
+    1. Pie chart for main sources (geographically) 
+    2. Major statistics (Num of tweets, retweets, likes, replies per day) 
+    3. Time series : Daily and weekly tweet freq count 
+    4. Histogram for Tweets sent by weekday and Tweets sent by hour of the day (in UTC) 
+    6. Tweets that got top 10 retweeted/ repied/ liked 
+    7. Bar chart for top active and influential users 
+    8. wordcloud 
+    
+   ##### Tweets from Volvo: 
+    1. Most mentioned users
+    2. Most used hastags
+    3. Tweets with most likes/ retweets/ replies 
+ 
+ 
 
 #### Sentiment Analysis
 
+First, we ranked the frequency of positive, neutral, and positive words with a labeled dataset. After deleting stop words, punctuations, and filler words, we were left with the most commonly appeared words from the three categories. Based on the frequency, we then assigned a specific score representing the strength/relevance of that word to a specific sentiment (positive: 0-1, neutral:0, negative:-1-0). Based on this logic, we utilized TextBlob to calculate subjectivity and polarity of each sentence and evaluate the sentiment of each tweet after EDA. We also added “slightly positive” and “slightly negative” to further classify tweets based on the magnitude of their sentiments, making it easier for the team to prioritize the most pressing issues in the Dashboard.
+
+We grouped the tweets by car models that were provided by the mentors from Volvo. Then, by giving a sentiment score to every tweet in each group, Volvo will know that each car model’s feedback is positive or negative. We also group the tweets by country and analyze their sentiment scores, so Volvo knows which countries they need to target in order to improve its performance.
 
 ### API Definition and Structure
 
